@@ -17,7 +17,8 @@ RUN wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-$
     ctest && \
     make install
 #  rm -rf /tmp/*
-    
+
+RUN echo "/usr/local/lib" >> /etc/ld.so.conf && ldconfig
     
 USER gitpod
 
