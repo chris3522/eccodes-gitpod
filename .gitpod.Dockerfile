@@ -15,7 +15,7 @@ FROM gitpod/workspace-full
 USER root
 ARG ECBUILD_VERSION=2.20.0
 RUN cd /tmp && \
-    wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-${ECBUILD_VERSION}-Source.tar.gz?api=v2 && \
+    wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
     tar xzf eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
     mkdir build && \
     cd build && \
