@@ -1,6 +1,6 @@
 FROM gitpod/workspace-full
 
-USER gitpod
+#USER gitpod
 
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
@@ -13,10 +13,10 @@ USER gitpod
 
 #eccodes-2.20.0-Source.tar.gz
 #gfortran
-#USER root
-RUN sudo apt-get -q update && \
-     sudo apt-get install -yq libboost-all-dev && \
-     sudo rm -rf /var/lib/apt/lists/*
+USER root
+RUN apt-get -q update && \
+    apt-get install -yq libboost-all-dev && \
+    rm -rf /var/lib/apt/lists/*
 ARG ECBUILD_VERSION=2.20.0
 #RUN export PATH=$PATH:/usr/local/bin && \
 RUN cd /tmp && \
@@ -24,13 +24,15 @@ RUN cd /tmp && \
     tar xzf eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
     mkdir build && \
     cd build && \
-    sudo cmake -DCMAKE_INSTALL_PREFIX=/usr/local ../eccodes-${ECBUILD_VERSION}-Source && \
-    sudo make && \
-    sudo ctest && \
-    sudo make install && \
-    sudo rm -rf /tmp/*
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/local ../eccodes-${ECBUILD_VERSION}-Source && \
+    make && \
+    ctest && \
+    make install && \
+    rm -rf /tmp/*
     
 
-#USER gitpod
+USER gitpod
+
+ENV PATH "$PATH:/usr/local/bin"
 #RUN export PATH=$PATH:/usr/local/bin 
 #RUN echo "PATH=\$PATH:/usr/local/bin"
