@@ -29,5 +29,6 @@ RUN cd /tmp && \
     ctest && \
     make install && \
     rm -rf /tmp/* 
+    echo "PATH=\$PATH:/usr/local/bin" >> $HOME/.bashrc
 
 USER gitpod
