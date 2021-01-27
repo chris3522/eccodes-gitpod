@@ -19,11 +19,11 @@ RUN sudo apt-get -q update && \
      sudo rm -rf /var/lib/apt/lists/*
 ARG ECBUILD_VERSION=2.20.0
 #RUN export PATH=$PATH:/usr/local/bin && \
-RUN sudo cd /tmp && \
-    sudo wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
-    sudo tar xzf eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
-    sudo mkdir build && \
-    sudo cd build && \
+RUN cd /tmp && \
+    wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
+    tar xzf eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
+    mkdir build && \
+    cd build && \
     sudo cmake -DCMAKE_INSTALL_PREFIX=/usr/local ../eccodes-${ECBUILD_VERSION}-Source && \
     sudo make && \
     sudo ctest && \
