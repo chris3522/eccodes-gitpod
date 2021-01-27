@@ -34,7 +34,7 @@ RUN cd /tmp && \
     
 
 USER gitpod
-
-ENV PATH "$PATH:/usr/local/bin"
+RUN export PATH="/usr/local/bin:$PATH"
+#ENV PATH "$PATH:/usr/local/bin"
 #RUN export PATH=$PATH:/usr/local/bin 
 #RUN echo "PATH=\$PATH:/usr/local/bin"
