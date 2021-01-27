@@ -26,7 +26,7 @@ RUN cd /tmp && \
     tar xzf eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
     mkdir build && \
     cd build && \
-    cmake -DCMAKE_INSTALL_PREFIX=/usr/local ../eccodes-${ECBUILD_VERSION}-Source && \
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ../eccodes-${ECBUILD_VERSION}-Source && \
     make && \
     ctest && \
     make install && \
@@ -34,7 +34,7 @@ RUN cd /tmp && \
     
 
 USER gitpod
-RUN export PATH="/usr/local/bin:$PATH"
+#RUN export PATH="/usr/local/bin:$PATH"
 #ENV PATH "$PATH:/usr/local/bin"
 #RUN export PATH=$PATH:/usr/local/bin 
 #RUN echo "PATH=\$PATH:/usr/local/bin"
