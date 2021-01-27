@@ -13,10 +13,12 @@ FROM gitpod/workspace-full
 
 #eccodes-2.20.0-Source.tar.gz
 #gfortran
+USER gitpod
+RUN sudo apt-get -q update && \
+    sudo apt-get install -yq libboost-all-dev && \
+    sudo rm -rf /var/lib/apt/lists/*
+
 USER root
-RUN apt-get -q update && \
-    apt-get install -yq libboost-all-dev && \
-    rm -rf /var/lib/apt/lists/*
 ARG ECBUILD_VERSION=2.20.0
 #RUN export PATH=$PATH:/usr/local/bin && \
 RUN cd /tmp && \
