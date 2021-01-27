@@ -12,18 +12,17 @@ RUN mkdir lib && \
     cd lib && \
     mkdir eccodes
 
-WORKDIR /
-
-RUN cd /tmp && \
-    wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
+#RUN cd /tmp && \
+WORKDIR /workspace/lib/eccodes
+RUN wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
     tar xzf eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
     mkdir build && \
     cd build && \
     cmake -DCMAKE_INSTALL_PREFIX=/workspace/lib/eccodes ../eccodes-${ECBUILD_VERSION}-Source && \
     make && \
     ctest && \
-    make install && \
-    rm -rf /tmp/*
+    make install
+#  rm -rf /tmp/*
     
     
 USER gitpod
