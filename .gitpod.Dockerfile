@@ -7,7 +7,8 @@ RUN apt-get -q update && \
 
 ARG ECBUILD_VERSION=2.20.0
 
-RUN mkdir /workspace/lib/eccodes && \
+RUN mkdir /workspace/lib && \
+    mkdir /workspace/lib/eccodes && \
     cd /tmp && \
     wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
     tar xzf eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
