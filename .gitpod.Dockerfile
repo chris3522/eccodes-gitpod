@@ -7,8 +7,8 @@ RUN apt-get -q update && \
 
 ARG ECBUILD_VERSION=2.20.0
 
-RUN cd /workspace && \
-    mkdir lib && \
+WORKDIR /workspace
+RUN mkdir lib && \
     cd lib && \
     mkdir eccodes
 
