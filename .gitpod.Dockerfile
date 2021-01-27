@@ -33,4 +33,4 @@ RUN cd /tmp && \
 
 USER gitpod
 #RUN export PATH=$PATH:/usr/local/bin 
-RUN echo "PATH=\$PATH:/usr/local/bin" >> $HOME/.bashrc
+RUN echo "PATH=\$PATH:/usr/local/bin"
