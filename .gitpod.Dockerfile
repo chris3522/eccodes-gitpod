@@ -16,6 +16,8 @@ RUN cd /tmp && \
     make && \
     ctest && \
     make install && \
-    rm -rf /tmp/*
+    rm -rf /tmp/* && \
+    export ECCODES_DIR=/usr/local
     
 USER gitpod
+
