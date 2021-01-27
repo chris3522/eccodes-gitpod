@@ -18,8 +18,8 @@ RUN apt-get -q update && \
      apt-get install -yq libboost-all-dev && \
      rm -rf /var/lib/apt/lists/*
 ARG ECBUILD_VERSION=2.20.0
-RUN export PATH=$PATH:/usr/local/bin && \
-    cd /tmp && \
+#RUN export PATH=$PATH:/usr/local/bin && \
+RUN cd /tmp && \
     wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
     tar xzf eccodes-${ECBUILD_VERSION}-Source.tar.gz && \
     mkdir build && \
@@ -28,7 +28,9 @@ RUN export PATH=$PATH:/usr/local/bin && \
     make && \
     ctest && \
     make install && \
-    rm -rf /tmp/* && \
-    echo "PATH=\$PATH:/usr/local/bin" >> $HOME/.bashrc
+    rm -rf /tmp/*
+    
 
 USER gitpod
+RUN export PATH=$PATH:/usr/local/bin 
+#    echo "PATH=\$PATH:/usr/local/bin" >> $HOME/.bashrc
