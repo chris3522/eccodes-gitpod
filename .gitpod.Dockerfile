@@ -20,7 +20,7 @@ RUN wget -q https://confluence.ecmwf.int/download/attachments/45757960/eccodes-$
 
 RUN echo "/usr/local/lib" >> /etc/ld.so.conf && \
     ldconfig && \
-    chmod -R 777 /usr/local
+    chmod -R 777 /usr/local/share/eccodes/definitions
     
 USER gitpod
 
