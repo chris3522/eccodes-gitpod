@@ -1,5 +1,6 @@
 ECCODES Gitpod workspace-image 
 ==============================
+Provide .gitpod.Dockerfile for ECCODES library
 
 # Make grib.out example, run:  
 ``` 
