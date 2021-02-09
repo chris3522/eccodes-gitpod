@@ -8,12 +8,12 @@ RUN apt-get -q update && \
 # OpenJPEG
 ARG OPENJPEG_VERSION=2.4.0
 
-RUN wget -q https://github.com/uclouvain/openjpeg/releases/tag/v2.4.0/openjpeg-v2.4.0-linux-x86_64.tar.gz && \
+RUN wwget -c https://github.com/uclouvain/openjpeg/archive/v2.4.0.tar.gz  -O openjpeg-2.4.0.tar.gz && \
     tar xzf openjpeg-v2.4.0-linux-x86_64.tar.gz && \
     mkdir build && \
     cd build && \
     # Compile and install OpenJPEG
-    cmake ../openjpeg-v2.4.0-linux-x86_64 -DCMAKE_BUILD_TYPE=Release && \
+    cmake ../openjpeg-2.4.0 -DCMAKE_BUILD_TYPE=Release && \
     make && \
     make install && \
     make clean
