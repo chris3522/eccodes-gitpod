@@ -6,19 +6,21 @@ RUN apt-get -q update && \
     rm -rf /var/lib/apt/lists/*
 
 # OpenJPEG
-ENV ROOTDIR /usr/local
-ENV OPENJPEG_VERSION 2.3.0
-WORKDIR $ROOTDIR/
-RUN mkdir -p $ROOTDIR/src
-RUN wget -qO- 
-    https://github.com/uclouvain/openjpeg/archive/v${OPENJPEG_VERSION}.tar.gz | 
-    tar -xzC $ROOTDIR/src/
+ARG OPENJPEG_VERSION=2.4.0
+
+RUN wget -q https://github.com/uclouvain/openjpeg/releases/tag/v2.4.0/openjpeg-v2.4.0-linux-x86_64.tar.gz && \
+    tar xzf openjpeg-v2.4.0-linux-x86_64.tar.gz && \
+    mkdir build && \
+    cd build && \
     # Compile and install OpenJPEG
-    && cd src/openjpeg-${OPENJPEG_VERSION} 
-    && mkdir build && cd build 
-    && cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$ROOTDIR 
-    && make -j3 && make -j3 install && make -j3 clean 
-    && cd $ROOTDIR && rm -Rf src/openjpeg* 
+    cmake ../openjpeg-v2.4.0-linux-x86_64 -DCMAKE_BUILD_TYPE=Release && \
+    make && \
+    make install && \
+    make clean
+    #&& make -j3 && make -j3 install && make -j3 clean 
+    #&& cd $ROOTDIR && rm -Rf src/openjpeg* 
+
+
 
 ARG ECBUILD_VERSION=2.20.0
 
