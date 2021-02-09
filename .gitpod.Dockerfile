@@ -10,13 +10,16 @@ ARG OPENJPEG_VERSION=2.4.0
 
 RUN wget -c https://github.com/uclouvain/openjpeg/archive/v2.4.0.tar.gz  -O openjpeg-2.4.0.tar.gz && \
     tar xzf openjpeg-2.4.0.tar.gz && \
+    mkdir openjpegtmp && \
+    cd openjpegtmp && \
     mkdir build && \
     cd build && \
     # Compile and install OpenJPEG
-    cmake ../openjpeg-2.4.0 -DCMAKE_BUILD_TYPE=Release && \
+    cmake ../../openjpeg-2.4.0 -DCMAKE_BUILD_TYPE=Release && \
     make && \
     make install && \
-    make clean
+    make clean && \
+
     #&& make -j3 && make -j3 install && make -j3 clean 
     #&& cd $ROOTDIR && rm -Rf src/openjpeg* 
 
