@@ -8,7 +8,7 @@ RUN apt-get -q update && \
 # OpenJPEG
 ARG OPENJPEG_VERSION=2.4.0
 
-RUN wwget -c https://github.com/uclouvain/openjpeg/archive/v2.4.0.tar.gz  -O openjpeg-2.4.0.tar.gz && \
+RUN wget -c https://github.com/uclouvain/openjpeg/archive/v2.4.0.tar.gz  -O openjpeg-2.4.0.tar.gz && \
     tar xzf openjpeg-2.4.0.tar.gz && \
     mkdir build && \
     cd build && \
