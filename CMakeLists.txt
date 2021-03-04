@@ -6,5 +6,5 @@ cmake_minimum_required(VERSION 3.19)
 
 project(grib C)
 
-add_executable(grib.out src/grib.c)
+add_executable(grib.out src/grib_message.c)
 target_link_libraries(grib.out eccodes)
