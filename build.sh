@@ -16,3 +16,4 @@ mkdir ${DIR}
 cd build
 cmake ..
 make
+
