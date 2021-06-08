@@ -2,7 +2,7 @@ FROM gitpod/workspace-full
 
 USER root
 RUN apt-get -q update && \
-    apt-get install -yq libboost-all-dev && \
+    apt-get install -yq libboost-all-dev libc6-dbg && \
     rm -rf /var/lib/apt/lists/*
 
 # OpenJPEG
